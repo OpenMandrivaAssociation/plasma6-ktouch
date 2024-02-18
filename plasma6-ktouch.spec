@@ -1,13 +1,20 @@
+%define git 20240218
+%define gitbranch release/24.02
+%define gitbranchd %(echo %{gitbranch} |sed -e "s,/,-,g")
 %define stable %([ "$(echo %{version} |cut -d. -f3)" -ge 70 ] && echo -n un; echo -n stable)
 
 Summary:	A program for learning touch typing
 Name:		plasma6-ktouch
-Version:	24.01.95
-Release:	1
+Version:	24.01.96
+Release:	%{?git:0.%{git}.}1
 License:	GPLv2+ and GFDL
 Group:		Graphical desktop/KDE
 Url:		http://edu.kde.org/ktouch
+%if 0%{?git:1}
+Source0:	https://invent.kde.org/education/ktouch/-/archive/%{gitbranch}/ktouch-%{gitbranchd}.tar.bz2#/ktouch-%{git}.tar.bz2
+%else
 Source0:	http://download.kde.org/%{stable}/release-service/%{version}/src/ktouch-%{version}.tar.xz
+%endif
 BuildRequires:	pkgconfig(xkbfile)
 BuildRequires:	pkgconfig(xcb-xkb)
 BuildRequires:	pkgconfig(x11)
@@ -58,7 +65,7 @@ to write. KTouch can also help you to remember what fingers to use.
 #----------------------------------------------------------------------
 
 %prep
-%autosetup -p1 -n ktouch-%{?git:master}%{!?git:%{version}}
+%autosetup -p1 -n ktouch-%{?git:%{gitbranchd}}%{!?git:%{version}}
 
 %build
 %cmake \
