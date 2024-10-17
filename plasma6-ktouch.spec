@@ -9,7 +9,7 @@ Version:	24.08.0
 Release:	%{?git:0.%{git}.}1
 License:	GPLv2+ and GFDL
 Group:		Graphical desktop/KDE
-Url:		http://edu.kde.org/ktouch
+Url:		https://edu.kde.org/ktouch
 %if 0%{?git:1}
 Source0:	https://invent.kde.org/education/ktouch/-/archive/%{gitbranch}/ktouch-%{gitbranchd}.tar.bz2#/ktouch-%{git}.tar.bz2
 %else
