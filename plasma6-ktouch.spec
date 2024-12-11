@@ -5,7 +5,7 @@
 
 Summary:	A program for learning touch typing
 Name:		plasma6-ktouch
-Version:	24.08.0
+Version:	24.11.90
 Release:	%{?git:0.%{git}.}1
 License:	GPLv2+ and GFDL
 Group:		Graphical desktop/KDE
